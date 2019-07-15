@@ -1,0 +1,900 @@
+// Copyright 2019 Zrna Research LLC
+
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not
+// use this file except in compliance with the License. You may obtain a copy of
+// the License at
+
+// http://www.apache.org/licenses/LICENSE-2.0
+
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations under
+// the License.
+
+syntax = "proto3";
+
+enum IOCellId {
+    IO_CELL0 = 0;
+    IO_CELL1 = 1;
+    IO_CELL2 = 2;
+    IO_CELL3 = 3;
+    IO_CELL4 = 4;
+    IO_CELL5 = 5;
+    IO_CELL6 = 6;
+    IO_CELL_DIGITAL = 7;
+    IO_RAM_TRANSFER_CELL = 8;
+    INVALID_IO_CELL_ID = 9;
+}
+
+message Option {
+    enum Id {
+        TRIGGER_MODE = 0;
+        OPAMP_MODE = 1;
+        CHOPPER_GAIN = 2;
+        COMPARATOR_INPUT_PHASE = 3;
+        COMPARATOR_OUTPUT = 4;
+        COMPARE_TO = 5;
+        CONTROL_SIGNAL_POLARITY = 6;
+        DECAY_SHAPE = 7;
+        DECAY_TO = 8;
+        DETECTION_TO_SAMPLE_DELAY = 9;
+        PULSE_HIGH_WHEN = 10;
+        EXTERNAL_SIGNAL_ALLOWED = 11;
+        FILTER_ORDER = 12;
+        FILTER_TOPOLOGY = 13;
+        FILTER_TYPE = 14;
+        GAIN_STAGE = 15;
+        HYSTERESIS = 16;
+        IO_CELL_MODE = 17;
+        IO_CELL_TYPE = 18;
+        INPUT_PHASE = 19;
+        INPUT_POLARITY = 20;
+        INPUT1_POLARITY = 21;
+        INPUT2_POLARITY = 22;
+        INPUT3_POLARITY = 23;
+        INPUT4_POLARITY = 24;
+        INPUT_TYPE = 25;
+        INPUT_WIRING = 26;
+        LOWER_DIGITAL_OUTPUT_MODE = 27;
+        LOWER_DIGITAL_OUTPUT_POLARITY = 28;
+        OUTPUT_MODE = 29;
+        OUTPUT_PHASE = 30;
+        OUTPUT_POLARITY = 31;
+        OUTPUT_SYNC = 32;
+        OUTPUT_TYPE = 33;
+        PEAK_AMPLITUDE_TARGET = 34;
+        PEAK_TO_DETECT = 35;
+        PHYSICAL_ADDRESS = 36;
+        POLARITY = 37;
+        RAM_TRANSFER_TRIGGER = 38;
+        RECTIFIER_MODE = 39;
+        SAWTOOTH_DIRECTION = 40;
+        SYNC_CLOCK_EDGE = 41;
+        UPPER_DIGITAL_OUTPUT_MODE = 42;
+        UPPER_DIGITAL_OUTPUT_POLARITY = 43;
+        HOLD_CONTROL_MODE = 44;
+        DEPENDENT_VARIABLE = 45;
+    }
+
+    enum Value {
+        DIGITAL_OUTPUT = 0;
+        REFERENCE_VOLTAGE_OUTPUT = 1;
+        LINEAR = 2;
+        EXPONENTIAL = 3;
+        SIGNAL_GROUND = 4;
+        REFERENCE_VOLTAGE_LEVEL = 5;
+        ONE_PHASE = 6;
+        NO_DELAY = 7;
+        TRIANGLE_RISING = 8;
+        TRIANGLE_FALLING = 9;
+        LOWPASS = 10;
+        HIGHPASS = 11;
+        BANDPASS = 12;
+        ALLPASS = 13;
+        TYPE_I = 14;
+        TYPE_II = 15;
+        UNDEFINED = 16;
+        FIRST = 17;
+        SECOND = 18;
+        SINGLE = 19;
+        CASCADED = 20;
+        ZERO_MILLIVOLTS = 21;
+        TEN_MILLIVOLTS = 22;
+        INPUT_DISABLED = 23;
+        INVERTING = 24;
+        NONINVERTING = 25;
+        ACTIVE_HIGH = 26;
+        ACTIVE_LOW = 27;
+        NONINVERTED = 28;
+        INVERTED = 29;
+        SYNC_DISABLED = 30;
+        SYNC_TO_PHASE1 = 31;
+        SYNC_TO_PHASE2 = 32;
+        POSITIVE_PEAK = 33;
+        NEGATIVE_PEAK = 34;
+        POSITIVE = 35;
+        NEGATIVE = 36;
+        FULL_WAVE = 37;
+        POSITIVE_HALF_WAVE = 38;
+        NEGATIVE_HALF_WAVE = 39;
+        RISING = 40;
+        FALLING = 41;
+        PHASE1 = 42;
+        PHASE2 = 43;
+        RISING_EDGE = 44;
+        FALLING_EDGE = 45;
+        TRIANGLE_WAVE = 46;
+        SQUARE_WAVE = 47;
+        I = 48;
+        IA = 49;
+        II = 50;
+        DIGITAL = 51;
+        RAM_TRANSFER_CELL = 52;
+        IO_CELL_DISABLED = 53;
+        INPUT = 54;
+        OUTPUT = 55;
+        INDEPENDENT_AMPLIFIER = 56;
+        LOW_OFFSET_CHOPPER = 57;
+        INPUT_BYPASS = 58;
+        INPUT_SAMPLE_AND_HOLD = 59;
+        AMPLIFIER = 60;
+        CONTROL_SIGNAL = 61;
+        OUTPUT_BYPASS = 62;
+        OUTPUT_SAMPLE_AND_HOLD = 63;
+        VMR = 64;
+        SINGLE_ENDED_DIGITAL = 65;
+        DIFFERENTIAL = 66;
+        INVERTED_DIFFERENTIAL = 67;
+        SINGLE_ENDED_POSITIVE = 68;
+        SINGLE_ENDED_NEGATIVE = 69;
+        ZERO_DB = 70;
+        TEN_DB = 71;
+        TWENTY_DB = 72;
+        THIRTY_DB = 73;
+        FORTY_DB = 74;
+        FIFTY_DB = 75;
+        SIXTY_DB = 76;
+        DIGITAL_OUTPUT_DISABLED = 77;
+        CLOCK_A = 78;
+        CLOCK_B = 79;
+        COMPARATOR_INPUT = 80;
+        RAM_TRANSFER_PULSE = 81;
+        AUTONULL_OSC_START_DONE = 82;
+        AUTOMATIC = 83;
+        EVENT_DRIVEN = 84;
+        CLOCK_SYNC = 85;
+        TRIGGER = 86;
+        ARM = 87;
+        ENABLED = 88;
+        DISABLED = 89;
+        IO_CELL0 = 90;
+        IO_CELL1 = 91;
+        IO_CELL2 = 92;
+        IO_CELL3 = 93;
+        IO_CELL4 = 94;
+        IO_CELL5 = 95;
+        IO_CELL6 = 96;
+        IO_CELL_DIGITAL = 97;
+        IO_RAM_TRANSFER_CELL = 98;
+        GROUND = 99;
+        SECOND_INPUT = 100;
+        VARIABLE_REFERENCE = 101;
+        SAMPLE_HOLD = 102;
+        PAUSE_RUN = 103;
+        DC_GAIN = 104;
+        HIGH_FREQUENCY_GAIN = 105;
+        POLE_FREQUENCY = 106;
+        ZERO_FREQUENCY = 107;
+        DEFAULT = 108;
+        CHOPPER_STABILIZED = 109;
+        IMMEDIATE = 110;
+        HOLD = 111;
+        HALF = 112;
+        CONTINUOUS = 113;
+        INVALID = 114;
+    }
+
+    Id id = 1;
+    Value value = 2;
+    repeated Value valid_values = 3;
+}
+
+message Parameter {
+    enum Id {
+        CENTER_FREQUENCY = 0;
+        CORNER_FREQUENCY = 1;
+        COUNTER_RESET_VALUE = 2;
+        DC_GAIN = 3;
+        DECAY = 4;
+        DECAY_TIME_CONSTANT = 5;
+        DELAY_MICROSECONDS = 6;
+        DIFFERENTIATION_CONSTANT = 7;
+        DIVISOR = 8;
+        DUTY_CYCLE = 9;
+        GAIN = 10;
+        GAIN_INPUT1 = 11;
+        GAIN_INPUT2 = 12;
+        GAIN_INPUT3 = 13;
+        GAIN_INPUT4 = 14;
+        HIGH_FREQUENCY_GAIN = 15;
+        SCALE_FACTOR = 16;
+        SCALE_FACTOR_INPUT1 = 17;
+        SCALE_FACTOR_INPUT2 = 18;
+        SCALE_FACTOR_INPUT3 = 19;
+        MULTIPLICATION_FACTOR = 20;
+        OSCILLATION_FREQUENCY = 21;
+        OUTPUT_VOLTAGE_LIMIT = 22;
+        PEAK_AMPLITUDE = 23;
+        PEAK_RATE = 24;
+        POLE_FREQUENCY = 25;
+        POLE_QUALITY_FACTOR = 26;
+        QUALITY_FACTOR = 27;
+        RANGE_PERCENTAGE = 28;
+        REFERENCE_VOLTAGE = 29;
+        WAVE_MAXIMUM_VOLTAGE = 30;
+        WAVE_MINIMUM_VOLTAGE = 31;
+        ZERO_FREQUENCY = 32;
+        ZERO_QUALITY_FACTOR = 33;
+    }
+
+    enum Type {
+        BYTE = 0;
+        CONSTANT = 1;
+        FREQUENCY_KHZ = 2;
+        GAIN_TYPE = 3;
+        PERCENTAGE = 4;
+        QUALITY_FACTOR_TYPE = 5;
+        RATE = 6;
+        TIME = 7;
+        VOLTAGE = 8;
+        INVALID = 9;
+    }
+
+    Id id = 1;
+    Type type = 2;
+    float requested = 3;
+    float realized = 4;
+    float minimum = 5;
+    float maximum = 6;
+
+    bool interpolation_in_progress = 7;
+    float interpolation_increment = 8;
+    uint32 current_interpolation_step = 9;
+    uint32 interpolation_step_count = 10;
+}
+
+message ParameterSweep {
+    float target_value = 1;
+    uint32 duration_microseconds = 2;
+    uint32 step_count = 3;
+}
+
+enum OutputId {
+    OUTPUT = 0;
+    TRI = 1;
+    SAW = 2;
+    SQUARE = 3;
+    INTERNAL = 4;
+    SELECT = 5;
+    INTEGRATE = 6;
+    INVERT = 7;
+    RESET_OUT = 8;
+    SAMPLE_PAUSE = 9;
+    PULSE = 10;
+    DIGITAL = 11;
+    OUTPUT1 = 12;
+    OUTPUT2 = 13;
+    OUTPUT_ID_COUNT = 14;
+    INVALID_OUTPUT_ID = 15;
+}
+
+enum InputId {
+    INPUT = 0;
+    INPUT1 = 1;
+    INPUT2 = 2;
+    INPUT3 = 3;
+    INPUT4 = 4;
+    CONTROL = 5;
+    REFERENCE = 6;
+    NONINVERTING = 7;
+    INVERTING = 8;
+    NUMERATOR = 9;
+    DENOMINATOR = 10;
+    RESET = 11;
+    X = 12;
+    Y = 13;
+    SUM = 14;
+    SAR = 15;
+    INTERNAL_COMPARATOR_INVERTING_INPUT = 16;
+    UPPER_DIGITAL_IN = 17;
+    LOWER_DIGITAL_IN = 18;
+    INTERNAL_IN = 19;
+    SUM_NODE_IN = 20;
+    INPUT_ID_COUNT = 21;
+    INVALID_INPUT_ID = 22;
+}
+
+enum ClockId {
+    INVALID = 0;
+    CLOCK5_DELAY = 1;
+    CLOCK5 = 2;
+    CLOCK4_DELAY = 3;
+    CLOCK4 = 4;
+    CLOCK3 = 5;
+    CLOCK2 = 6;
+    CLOCK1 = 7;
+    CLOCK0 = 8;
+    CLOCK_POWER_UPS = 9;
+    CLOCK_SYS1 = 10;
+    CLOCK_SYS2 = 11;
+}
+
+message ModuleClockConfiguration {
+    ClockId clock_a = 1;
+    ClockId clock_b = 2;
+}
+
+message ProcessorClockConfiguration {
+    enum SysClockTimebase {
+        SYS1 = 0;
+        SYS2 = 1;
+    }
+
+    message SysClockConfiguration {
+        ClockId id = 1;
+        uint32 divisor = 2;
+        SysClockTimebase timebase = 3;
+    }
+
+    repeated SysClockConfiguration sys_clock = 1;
+    uint32 master_clock_frequency = 2;
+    bool wait_for_clock_sync = 3;
+}
+
+message LookupTable {
+    repeated float data = 1;
+    float minimum_possible_value = 2;
+    float maximum_possible_value = 3;
+}
+
+message AnalogModule {
+    message Input {
+        message EnabledIf {
+            Option.Id option_id = 1;
+            Option.Value option_value = 2;
+        }
+
+        InputId id = 1;
+        bool conditionally_enabled = 2;
+        EnabledIf enabled_if = 3;
+    }
+
+    enum Type {
+        COMPARATOR = 0;
+
+        DELAY_LINE = 1;
+
+        DIFFERENTIATOR = 2;
+
+        DIVIDER = 3;
+        DIVIDER_HOLD = 4;
+
+        FILTER_LOWPASS = 5;
+        FILTER_LOWPASS_LF = 6;
+        FILTER_HIGHPASS = 7;
+        FILTER_HIGHPASS_LF = 8;
+        FILTER_ALLPASS = 9;
+        FILTER_ALLPASS_LF = 10;
+        FILTER_POLE_ZERO = 11;
+        FILTER_POLE_ZERO_LF = 12;
+        FILTER_BIQUAD_LOWPASS = 13;
+        FILTER_BIQUAD_LOWPASS_LF = 14;
+        FILTER_BIQUAD_HIGHPASS = 15;
+        FILTER_BIQUAD_HIGHPASS_LF = 16;
+        FILTER_BIQUAD_BANDPASS = 17;
+        FILTER_BIQUAD_BANDPASS_LF = 18;
+        FILTER_BIQUAD_BANDSTOP = 19;
+        FILTER_BIQUAD_BANDSTOP_LF = 20;
+        FILTER_BIQUAD_POLE_ZERO = 21;
+        FILTER_VOLTAGE_CONTROLLED = 22;
+
+        GAIN_HALF = 23;
+        GAIN_HOLD = 24;
+        GAIN_INV = 25;
+        GAIN_LIMITER = 26;
+        GAIN_POLARITY = 27;
+        GAIN_POLARITY_LOWPASS = 28;
+        GAIN_SWITCH = 29;
+        GAIN_SWITCH_LOWPASS = 30;
+        GAIN_VOLTAGE_CONTROLLED = 31;
+        GAIN_VOLTAGE_CONTROLLED_CASCADED = 32;
+
+        HOLD = 33;
+        HOLD_VOLTAGE_CONTROLLED = 34;
+
+        INTEGRATOR = 35;
+        INTEGRATOR_HOLD = 36;
+        INTEGRATOR_RESET = 37;
+
+        MULTIPLIER = 38;
+        MULTIPLIER_HOLD = 39;
+
+        OSCILLATOR_SAW = 40;
+        OSCILLATOR_SAW_SQR = 41;
+        OSCILLATOR_SINE = 42;
+        OSCILLATOR_SINE_LF = 43;
+        OSCILLATOR_TRI_SQR = 44;
+        OSCILLATOR_VOLTAGE_CONTROLLED = 45;
+
+        PEAK_DETECTOR = 46;
+        PEAK_DETECTOR_RESET = 47;
+        PEAK_DETECTOR_TAU = 48;
+        PEAK_DETECTOR_TAU_SYNC = 49;
+
+        RECTIFIER_FILTER = 50;
+        RECTIFIER = 51;
+        RECTIFIER_HOLD = 52;
+
+        SQUARE_ROOT = 53;
+
+        SUM_TWO = 54;
+        SUM_THREE = 55;
+        SUM_FOUR = 56;
+        SUM_INVERT_TWO = 57;
+        SUM_INVERT_THREE = 58;
+        SUM_FILTER_TWO = 59;
+        SUM_FILTER_THREE = 60;
+        SUM_INTEGRATE_TWO = 61;
+        SUM_INTEGRATE_TWO_RESET = 62;
+        SUM_INTEGRATE_THREE = 63;
+        SUM_INTEGRATE_THREE_RESET = 64;
+        SUM_BIQUAD = 65;
+
+        TRANSFER_FUNCTION = 66;
+
+        VOLTAGE_CONSTANT = 67;
+
+        ZERO_CROSSING_DETECTOR = 68;
+
+        ARBITRARY_WAVE_GEN = 69;
+        ARBITRARY_WAVE_GEN_RESET = 70;
+        DUAL_ARBITRARY_WAVE_GEN = 71;
+        DUAL_ARBITRARY_WAVE_GEN_RESET = 72;
+
+        AUDIO_IN = 73;
+        AUDIO_OUT = 74;
+        ULTRASONIC_IN = 75;
+        ULTRASONIC_OUT = 76;
+        OUTPUT_CELL = 77;
+        INPUT_CELL = 78;
+        DIGITAL_OUTPUT_CELL = 79;
+
+        ANALOG_TO_DIGITAL_CONVERTER = 80;
+        DELTA_SIGMA_MODULATOR = 81;
+        DELTA_SIGMA_MODULATOR_EXT_REF = 82;
+    };
+
+    uint32 id = 1;
+    Type type = 2;
+
+    repeated Parameter parameters = 3;
+    repeated Option options = 4;
+    ModuleClockConfiguration clock_configuration = 5;
+    bool has_lookup_table = 6;
+}
+
+message OutputAddress {
+    uint32 module_id = 1;
+    OutputId output_id = 2;
+}
+
+message InputAddress {
+    uint32 module_id = 1;
+    InputId input_id = 2;
+}
+
+message Net {
+    OutputAddress output_address = 1;
+    InputAddress input_address = 2;
+}
+
+message ConfigurationByteStream {
+    bytes data = 1;
+}
+
+message MidiListener {
+    uint32 id = 1;
+    uint32 channel = 2;
+    uint32 module_id = 3;
+
+    oneof target {
+        Parameter.Id parameter_id = 4;
+        Option.Id option_id = 5;
+    }
+
+    message Note {
+        bool custom_value_map = 1;
+
+        message NoteToParameter {
+            repeated float values = 1;
+        }
+        message NoteToOption {
+            repeated Option.Value values = 1;
+        }
+
+        oneof on_note_received {
+            NoteToParameter parameter_map = 2;
+            NoteToOption option_map = 3;
+        }
+    }
+
+    message Trigger {
+        oneof on_triggered {
+            float parameter_value = 1;
+            Option.Value option_value = 2;
+        }
+    }
+
+    message Gate {
+        oneof on_gate_opened {
+            float parameter_value_open = 1;
+            Option.Value option_value_open = 2;
+        }
+        oneof on_gate_closed {
+            float parameter_value_closed = 3;
+            Option.Value option_value_closed = 4;
+        }
+    }
+
+    message CC {
+        uint32 number = 1;
+        bool match_any = 2;
+
+        message ParameterValueRange {
+            float min = 1;
+            float max = 2;
+            uint32 cc_min = 3;
+            uint32 cc_max = 4;
+        }
+
+        message OptionValueRange {
+            message Item {
+                Option.Value value = 1;
+                uint32 cc_min = 2;
+                uint32 cc_max_exclusive = 3;
+            }
+
+            repeated Item items = 4;
+        }
+
+        oneof on_cc_changed {
+            ParameterValueRange parameter_value_range = 3;
+            OptionValueRange option_value_range = 4;
+        }
+    }
+
+    oneof type {
+        Note note = 7;
+        Trigger trigger = 8;
+        Gate gate = 9;
+        CC cc = 10;
+    }
+}
+
+message Circuit {
+    uint32 id = 1;
+    repeated AnalogModule modules = 2;
+    repeated Net nets = 3;
+    repeated MidiListener midi_listeners = 4;
+    LookupTable lookup_table = 5;
+    ProcessorClockConfiguration processor_clock_configuration = 6;
+}
+
+message SystemOption {
+    enum Id {
+        TEST_MODE = 0;
+        REALIZED_VALUE_RESPONSE = 1;
+        HALF_SPEED_MASTER_CLOCK = 2;
+    }
+    Id id = 1;
+    bool enabled = 2;
+}
+
+enum SystemState {
+    PAUSED = 0;
+    RUNNING = 1;
+    RESETTING = 2;
+}
+
+message PathComponent {
+    enum ResourceId {
+        CIRCUIT = 0;
+        BYTESTREAM = 1;
+        UPDATE_BYTESTREAM = 2;
+        MODULE = 3;
+        MODULES = 4;
+        NETS = 5;
+        STORAGE = 6;
+        PARAMETER = 7;
+        PARAMETERS = 8;
+        OPTION = 9;
+        OPTIONS = 10;
+        SYSTEM = 11;
+        TYPE = 12;
+        INPUTS = 13;
+        OUTPUTS = 14;
+        DEBUG = 15;
+        CIRCUITS = 16;
+        LOAD = 17;
+        DEFAULT = 18;
+        COUNT = 19;
+        NET = 21;
+        REQUESTED = 22;
+        REALIZED = 23;
+        MINIMUM = 24;
+        MAXIMUM = 25;
+        VALUE = 26;
+        STATE = 27;
+        RESOURCE = 28;
+        HEAP = 29;
+        ANALOG = 30;
+        FITS = 31;
+        CLOCK = 32;
+        HAS_LOOKUP_TABLE = 33;
+        LOOKUP_TABLE = 34;
+        MIDI = 35;
+        LISTENERS = 36;
+        LISTENER = 37;
+        SWEEP = 38;
+        PING = 39;
+        VERSION = 40;
+        ENDPOINTS = 41;
+        STARTUP = 42;
+        DISCONNECT = 43;
+        PHASE = 44;
+    }
+
+    oneof type {
+        ResourceId resource_id = 1;
+        AnalogModule.Type module_type = 2;
+        Parameter.Id parameter_id = 3;
+        Option.Id option_id = 4;
+        SystemOption.Id system_option_id = 5;
+        InputId input_id = 6;
+        OutputId output_id = 7;
+        uint32 integer_argument = 8;
+        string string_argument = 9;
+    }
+}
+
+message URL {
+    repeated PathComponent path_components = 1;
+}
+
+enum Method {
+    POST = 0;
+    GET = 1;
+    PUT = 2;
+    PATCH = 3;
+    DELETE = 4;
+}
+
+enum StatusCode {
+    OK = 0;
+    PRIMARY_CONFIG_BYTESTREAM = 1;
+    UPDATE_CONFIG_BYTESTREAM = 2;
+    REALIZED_VALUES = 3;
+    PROTOBUF_DECODE_ERROR = 4;
+    PROTOBUF_ENCODE_ERROR = 5;
+    INVALID_CONFIG_BYTESTREAM = 6;
+    INVALID_REQUEST_ERROR = 7;
+    COBS_ENCODE_ERROR = 8;
+    COBS_DECODE_ERROR = 9;
+    MAIL_QUOTE_ALLOC_ERROR = 10;
+    USB_HAL_TIMEOUT_ERROR = 11;
+    RESPONSE_PAYLOAD = 12;
+    NOT_FOUND = 13;
+    INSUFFICIENT_ANALOG_RESOURCES = 14;
+    MIDI_LISTENER_ERROR = 15;
+    LOOKUP_TABLE_VALUE_OUT_OF_RANGE = 16;
+    MODULE_NOT_FOUND = 17;
+    PARAMETER_NOT_FOUND = 18;
+    OPTION_NOT_FOUND = 19;
+    MIDI_LISTENER_NOT_FOUND = 20;
+    REQUIRES_PAUSED_CIRCUIT = 21;
+}
+
+message StorageDebugRequest {
+    enum Command {
+        CAT = 0;
+        LS = 1;
+        PUT = 2;
+        REMOVE = 3;
+        RENAME = 4;
+        MKDIR = 5;
+    }
+    Command command = 1;
+    string path = 2;
+    string new_path = 3;
+    bytes data = 4;
+}
+
+message Request {
+    Method method = 1;
+    URL url = 2;
+
+    oneof payload {
+        Circuit circuit = 3;
+        AnalogModule module = 4;
+        Net net = 5;
+        MidiListener midi_listener = 6;
+        SystemState system_state = 7;
+        StorageDebugRequest storage_debug_request = 8;
+        float requested = 9;
+        Option.Value option_value = 10;
+        bool system_option_enabled = 11;
+        ConfigurationByteStream bytestream = 12;
+        ModuleClockConfiguration module_clock_configuration = 13;
+        ProcessorClockConfiguration processor_clock_configuration = 14;
+        ParameterSweep parameter_sweep = 15;
+    }
+    LookupTable lookup_table = 16;
+}
+
+message Inputs {
+    repeated AnalogModule.Input input = 1;
+}
+
+message Outputs {
+    repeated OutputId output = 1;
+}
+
+message AnalogModules {
+    repeated AnalogModule module = 1;
+}
+
+message Nets {
+    repeated Net net = 1;
+}
+
+message Parameters {
+    repeated Parameter parameter = 1;
+}
+
+message SystemOptions {
+    repeated SystemOption system_option = 1;
+}
+
+message Options {
+    repeated Option option = 1;
+}
+
+message ModuleTypes {
+    repeated AnalogModule.Type module_type = 1;
+}
+
+message MidiListeners {
+    repeated MidiListener midi_listener = 1;
+}
+
+message HeapInfo {
+    uint32 bytes_free = 1;
+    uint32 bytes_total = 2;
+    float used_percentage = 3;
+}
+
+message AnalogInfo {
+    uint32 capacitors = 1;
+    uint32 opamps = 2;
+    uint32 iocells = 3;
+    uint32 comparators = 4;
+    uint32 sars = 5;
+    bool lookup_table = 6;
+    bool counter = 7;
+    float resource_block_used_percentage = 8;
+    float io_cell_used_percentage = 9;
+    bool spans_block_boundary = 10;
+}
+
+message AnalogSignalProcessor {
+    message ResourceOwnership {
+        bool free = 1;
+        uint32 module_id = 2;
+    }
+
+    message ResourceBlock {
+        repeated ResourceOwnership capacitor = 1;
+        repeated ResourceOwnership opamp = 2;
+        ResourceOwnership comparator = 3;
+        ResourceOwnership sar = 4;
+    }
+
+    message IOCellAllocation {
+        ResourceOwnership owner = 1;
+        Option.Value io_cell_type = 2;
+        Option.Value io_cell_id = 3;
+    }
+
+    repeated ResourceBlock resource_block = 1;
+    repeated IOCellAllocation io_cell = 2;
+    ResourceOwnership lookup_table = 3;
+    ResourceOwnership counter = 4;
+}
+
+message StorageResponse {
+    message FileInfo {
+        string name = 1;
+        uint32 byte_count = 2;
+        bool is_directory = 3;
+    }
+    uint32 bytes_free = 1;
+    uint32 bytes_total = 2;
+    float used_percentage = 3;
+    float current_page_usage = 4;
+    bool page_0_valid = 5;
+    bool page_1_valid = 6;
+    uint32 minimum_virtual_address = 7;
+    uint32 maximum_virtual_address = 8;
+    repeated FileInfo file_info = 9;
+    bytes data = 10;
+}
+
+message Acknowledge {
+    bytes data = 1;
+}
+
+message Version {
+    uint32 major = 1;
+    uint32 minor = 2;
+    uint32 patch = 3;
+}
+
+message Endpoint {
+    repeated Method method = 1;
+    URL url = 2;
+    string docstring = 3;
+}
+
+message Endpoints {
+    repeated Endpoint endpoint = 1;
+}
+
+message Response {
+    StatusCode status_code = 1;
+
+    oneof payload {
+        ConfigurationByteStream bytestream = 2;
+        AnalogModules modules = 3;
+        ModuleTypes module_types = 4;
+        Parameters parameters = 5;
+        Options options = 6;
+        Inputs inputs = 7;
+        Outputs outputs = 8;
+        Nets nets = 9;
+        StorageResponse storage_response = 10;
+        AnalogModule.Type module_type = 11;
+        Circuit circuit = 12;
+        uint32 module_count = 13;
+        uint32 net_count = 14;
+        float requested = 15;
+        float realized = 16;
+        float minimum = 17;
+        float maximum = 18;
+        Option.Value option_value = 19;
+        SystemOptions system_options = 20;
+        SystemState system_state = 21;
+        HeapInfo heap_info = 22;
+        AnalogInfo analog_info = 23;
+        AnalogSignalProcessor analog_signal_processor = 24;
+        bool module_fits = 25;
+        ModuleClockConfiguration module_clock_configuration = 26;
+        ProcessorClockConfiguration processor_clock_configuration = 27;
+        bool has_lookup_table = 28;
+        MidiListeners midi_listeners = 29;
+        Acknowledge acknowledge = 30;
+        Version version = 31;
+        Endpoints endpoints = 32;
+    }
+    LookupTable lookup_table = 33;
+}
