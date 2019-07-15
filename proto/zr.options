@@ -1,0 +1,37 @@
+Option.valid_values                                              max_count:9
+ProcessorClockConfiguration.sys_clock                            max_count:11
+LookupTable.data                                                max_count:256
+AnalogModule.parameters                                         max_count:6
+AnalogModule.options                                            max_count:16
+ConfigurationByteStream.data                                    max_size:1024
+MidiListener.Note.NoteToParameter.values                        max_count:128
+MidiListener.Note.NoteToOption.values                           max_count:128
+MidiListener.CC.OptionValueRange.items                          max_count:8
+Circuit.modules                                                 max_count:24
+Circuit.nets                                                    max_count:24
+Circuit.midi_listeners                                           max_count:24
+PathComponent.string_argument                                    max_size:33
+URL.path_components                                              max_count:6
+StorageDebugRequest.path                                        max_size:64
+StorageDebugRequest.new_path                                     max_size:64
+StorageDebugRequest.data                                        max_size:1024
+Inputs.input                                                    max_count:7
+Outputs.output                                                  max_count:5
+AnalogModules.module                                            max_count:24
+Nets.net                                                        max_count:24
+Parameters.parameter                                            max_count:10
+SystemOptions.system_option                                      max_count:5
+Options.option                                                  max_count:16
+ModuleTypes.module_type                                          max_count:83 fixed_count:true
+MidiListeners.midi_listener                                      max_count:16
+AnalogSignalProcessor.ResourceBlock.capacitor                   max_count:8 fixed_count:true
+AnalogSignalProcessor.ResourceBlock.opamp                       max_count:2 fixed_count:true
+AnalogSignalProcessor.resource_block                             max_count:4 fixed_count:true
+AnalogSignalProcessor.io_cell                                    max_count:9 fixed_count:true
+StorageResponse.FileInfo.name                                   max_size:33
+StorageResponse.file_info                                        max_count:128
+StorageResponse.data                                            max_size:1024
+Acknowledge.data                                                max_size:3
+Endpoint.method                                                 max_count:5
+Endpoint.docstring                                              max_size:64
+Endpoints.endpoint                                              max_count:64
