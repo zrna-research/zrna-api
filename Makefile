@@ -28,12 +28,12 @@ all: $(PB_DEF_DIR)/zr.proto | output_directories
 output_directories:
 	for output_directory in $(PROTO_OUTPUT_DIRS) ; do \
 		mkdir -p $$output_directory ; \
-    done
+	done
 
 clean:
 	for output_directory in $(PROTO_OUTPUT_DIRS) ; do \
 		rm -f ./$$output_directory/* ; \
-    done
+	done
 
 .PHONY: clean
 .PHONY: all
