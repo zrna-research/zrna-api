@@ -519,11 +519,11 @@ class Client(object):
             return hasattr(module_self, 'lookup_table')
 
         def module_can_add(module_self):
-            return self.get('/module/%s/analog/fits' % to_path_name(moduleName)).moduleFits
+            return self.get('/module/%s/analog/fits' % to_path_name(moduleName)).module_fits
 
         def module_analog(module_self):
             return self._as_pretty_dict(
-                self.get('/module/%s/analog' % to_path_name(moduleName)).analogInfo)
+                self.get('/module/%s/analog' % to_path_name(moduleName)).analog_info)
 
         def module_str(module_self):
             s = m['type_name'] + ' {' + '\n'
