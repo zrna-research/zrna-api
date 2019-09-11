@@ -284,7 +284,7 @@ class Storage(object):
     def __str__(self):
         return str(self.debug())
 
-    def _storage_request(self, cmd, path, new_path='', data=''):
+    def _storage_request(self, cmd, path, new_path='', data=b''):
         debugRequest = zr.StorageDebugRequest()
         debugRequest.command = zr.StorageDebugRequest.Command.Value(cmd.upper())
         debugRequest.path = path

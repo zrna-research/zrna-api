@@ -17,7 +17,7 @@ EMAIL = 'nicolas@zrna.org'
 AUTHOR = 'Nicolas Steven Miller'
 REQUIRES_PYTHON = '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, <4'
 
-VERSION = '1.0.6'
+VERSION = '1.0.7'
 
 REQUIRED = [
     'cobs',
