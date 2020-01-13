@@ -713,6 +713,7 @@ message StorageDebugRequest {
         REMOVE = 3;
         RENAME = 4;
         MKDIR = 5;
+        FORMAT = 6;
     }
     Command command = 1;
     string path = 2;

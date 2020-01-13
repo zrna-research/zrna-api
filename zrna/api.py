@@ -313,6 +313,9 @@ class Storage(object):
     def mkdir(self, path):
         return self._storage_request('mkdir', path)
 
+    def format(self, path=''):
+        return self._storage_request('format', path)
+
 class ZrnaException(Exception):
     pass
 
